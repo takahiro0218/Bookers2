@@ -1,2 +1,13 @@
-<h1>Books#show</h1>
-<p>Find me in app/views/books/show.html.erb</p>
+<div>
+  <%= flash[:notice] %>
+</div>
+<h2>Book detail</h2>
+  <p><%= image_tag @book.user.get_profile_image(100,100) %></p>
+　<p><%= @book.user.name %></p>
+  <p><%= @book.title %></p>
+  <p><%= @book.body %></p>
+  
+  <% if @book.user == current_user %>
+    <p><%= link_to "Edit", edit_book_path(@book.id) %></p>
+    <p><%= link_to "Destroy", books_path, method: :delete %></p>
+  <% end %>
