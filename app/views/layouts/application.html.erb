@@ -5,40 +5,44 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    
+    <script src="<script src="https://kit.fontawesome.com/224a897d7c.js" crossorigin="anonymous"></script>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <header>  
+    <header class="shadow-sm" >  
       <% if user_signed_in? %>
-        <li>
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
           <%= link_to 'Home', user_path(current_user.id) %>
         </li>
-        <li>
+        <li class="nav-item">
           <%= link_to "Users", users_path %>
         </li>
-        <li>
+        <li class="nav-item">
           <%= link_to 'Books', books_path %>
         </li>
-        <li>
+        <li class="nav-item">
           <%= link_to "Log out", destroy_user_session_path, method: :delete %>
         </li>
       <% else %>
-        <li>
+        <li class="nav-item">
           <%= link_to 'Home', root_path %>
         </li>
-        <li>
+        <li class="nav-item">
           <%= link_to 'About', about_path %>
         </li>
-        <li>
+        <li class="nav-item">
           <%= link_to "Sign Up", new_user_registration_path %>
         </li>
-        <li>
+        <li class="nav-item">
           <%= link_to "Log in", new_user_session_path %>
         </li>
       <% end %>
+        </ul>
     </header>
     <%= flash[:notice] %>
     <%= yield %>

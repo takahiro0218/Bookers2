@@ -3,7 +3,7 @@
 <%= form_with model: @user, url: user_session_path do |f| %>
   <div class="field">
     <%= f.label :name %><br />
-    <%= f.text_field :name, autofocus: true, class: "form-control", placeholder: "Name" %>
+    <%= f.text_field :name, autofocus: true, placeholder: "Name" %>
   </div>
 
   <div class="field">
