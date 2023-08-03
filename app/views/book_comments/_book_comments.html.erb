@@ -1,0 +1,10 @@
+<% book.book_comments.each do |book_comment| %>
+  <%= image_tag book_comment.user.get_profile_image(100,100) %>
+  <div id="comment_count">
+    <%= book_comment.comment %>
+  </div>
+  <% if book_comment.user == current_user %>
+    <%= link_to "Destroy", book_book_comment_path(book, book_comment), method: :delete, remote: true, class:"btn btn-sm btn-danger destroy_book_92220" %>
+  <% end %>
+  <p><%= link_to current_user.name, user_path(current_user.id) %></p>
+<% end %>
