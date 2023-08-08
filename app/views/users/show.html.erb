@@ -28,6 +28,57 @@
           </tbody>
         <% end %>
       </table>
+      <h2>投稿数の前日比</h2>
+      <div class = "table_width">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>今日の投稿数</th>
+            <th>前日の投稿数</th>
+            <th>前日比</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+         　  <td><%= @todaybook.count %></td>
+            <td><%= @yesterdaybook.count %></td>
+            <td>
+              <% if @yesterdaybook.count == 0 %>
+                前日の投稿はありません
+              <% else %>
+           　    <% @the_day_before = @todaybook.count / @yesterdaybook.count.to_f  %>
+           　    <%= (@the_day_before * 100).round %>%
+              <% end %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      </div>
+      <div class = "table_width">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>今週の投稿数</th>
+            <th>先週の投稿数</th>
+            <th>前週比</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+         　  <td><%= @thisweekbook.count %></td>
+            <td><%= @lastweekbook.count %></td>
+            <td>
+              <% if @lastweekbook.count == 0 %>
+                先週の投稿はありません
+              <% else %>
+           　    <% @the_week_before = @thisweekbook.count / @lastweekbook.count.to_f  %>
+           　    <%= (@the_week_before * 100).round %>%
+              <% end %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      </div>
     </div>
   </div>
 </div>
