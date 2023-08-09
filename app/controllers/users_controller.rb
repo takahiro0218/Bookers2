@@ -30,25 +30,37 @@ class UsersController < ApplicationController
     
   end
 
-  def edit
-    @user = User.find(params[:id])
-  end
+def edit
+  @user = User.find(params[:id])
+end
 
-  def update
-    @user = User.find(params[:id])
-    if @user.update(user_params)
-      flash[:notice] = "You have updated user successfully."
-      redirect_to user_path(current_user.id)
-    else
-      render :edit
-    end
+def update
+  @user = User.find(params[:id])
+  if @user.update(user_params)
+    flash[:notice] = "You have updated user successfully."
+    redirect_to user_path(current_user.id)
+  else
+    render :edit
   end
+end
 
-  def index
-    @book = Book.new
-    @user = current_user
-    @users = User.all
+def index
+  @book = Book.new
+  @user = current_user
+  @users = User.all
+end
+
+def search
+  @user = User.find(params[:user_id])
+  @books = @user.books 
+  @book = Book.new
+  if params[:created_at] == ""
+    @search_book = "日付を選択してください"
+  else
+    create_at = params[:created_at]
+    @search_book = @books.where(['created_at LIKE ? ', "#{create_at}%"]).count
   end
+end
 
 
   private
