@@ -21,6 +21,8 @@ Rails.application.routes.draw do
   
   resources :groups, only: [:new, :index, :show, :create, :edit, :update] do
     resources :group_users, only: [:create, :destroy]
+    get "new/mail" => "groups#new_mail"
+    get "send/mail" => "groups#send_mail"
   end
   
   get 'search' => 'searches#search'
