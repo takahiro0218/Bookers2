@@ -13,6 +13,8 @@ class Book < ApplicationRecord
   validates :body,
     length: { maximum: 200 }
     
+  validates :category, presence: true
+    
   def self.looks(search, word)
     if search == "perfect_match"
       @book = Book.where("title LIKE?","#{word}")

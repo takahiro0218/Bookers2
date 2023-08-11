@@ -26,5 +26,6 @@ Rails.application.routes.draw do
   end
   
   get 'search' => 'searches#search'
+  get 'tagsearches/search' => 'tagsearches#search'
   
 end
